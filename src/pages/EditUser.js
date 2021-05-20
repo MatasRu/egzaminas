@@ -1,19 +1,52 @@
-// import {useState} from 'react'
+import {useRef, useState} from "react";
+import { useParams } from "react-router-dom";
+import http from "../plugins/Fetch";
 
 
-function EditUser() {
+function EditUser({getUsers}) {
+
+    const params = useParams()
+
+    const [getError, setError] = useState("")
+    const id = params.id
+    const name = useRef()
+    const age = useRef()
+    const email = useRef()
+    const password = useRef()
+
+    const updateUser = () => {
+        const data = {
+            id: id,
+            name: name.current.value,
+            age: age.current.value,
+            email: email.current.value,
+            password: password.current.value
+        }
+        http.post('/editUser', data).then(res => {
+            if(res.error){
+                setError("Įvyko klaida, bandykite dar kartą")
+            }else{
+                setError("Vartotojas paredaguotas sėkmingai")
+            }
+        })
+    }
+
 
     return (
-        <div className="upload-page">
 
+        <div className="d-flex flex-dir-col mt-50 flex-a-center flex-j-center">
 
+            <input ref={name} type="text" placeholder="Vartotojo vardas"/>
+            <input ref={age} type="number" placeholder="Vartotojo amžius"/>
+            <input ref={email} type="text" placeholder="Vartotojo el. paštas"/>
+            <input ref={password} type="password" placeholder="Vartotojo slaptažodis"/>
+            <button onClick={updateUser} className="mt-20">Pateikti</button>
 
-
-            Page to edit existing user
-
-
+            <div className="mt-50 green">{getError}</div>
 
         </div>
+
+
     );
 }
 

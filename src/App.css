@@ -1,38 +1,79 @@
-.App {
+.mainBox {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.toolbar{
+  width: 100%;
+  height: 75px;
+  background-color: grey;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.link{
+  text-decoration: none;
   color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+.user{
+  width: 100%;
+}
+.width25{
+  width: 20%;
+  padding: 10px;
+}
+.deleteBtn{
+  color: red;
+  width: 20%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.editBtn{
+  color: orange;
+  width: 20%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: none;
+}
+.border{
+  border-bottom: 1px solid black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.bold{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.flex-dir-col{
+  flex-direction: column;
+}
+.flex-j-center{
+  justify-content: center;
+}
+.flex-j-btw{
+  justify-content: space-between;
+}
+.flex-a-center{
+  align-items: center;
+}
+.mt-20{
+  margin-top: 20px;
+}
+.mt-50{
+  margin-top: 50px;
+}
+.m10{
+  margin: 10px;
+}
+
+.green{
+  color: green;
 }

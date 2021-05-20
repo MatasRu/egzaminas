@@ -5,8 +5,8 @@ module.exports = {
         console.log(req.body)
         let user = new usersDb
         user.userName = req.body.name
-        user.userAge = req.body.quantity
-        user.userEmail = req.body.quantity
+        user.userAge = req.body.age
+        user.userEmail = req.body.email
         user.userPassword = req.body.password
         user.save().then(() => {
             res.send({error: false, message: "User created successfully"})
@@ -16,23 +16,24 @@ module.exports = {
     },
     editUser: async (req, res) => {
         console.log(req.body)
-        await productDb.findOneAndUpdate(
+        await usersDb.findOneAndUpdate(
             {_id: req.body.id}, {
-                quantity: req.body.quantity
+                userName: req.body.name,
+                userAge: req.body.age,
+                userEmail: req.body.email,
+                userPassword: req.body.password
             })
-        let products = await productDb.find({})
-        res.send({products})
+        res.send({error:false, message: "SVEIKI"})
 
     },
     getUsers: async (req, res) => {
-        let products = await productDb.find({})
-        res.send({products})
+        let users = await usersDb.find({})
+        res.send({users})
     },
     deleteUser: async (req, res) => {
-        productDb.findOneAndRemove({_id: req.params.key})
+        usersDb.findOneAndRemove({_id: req.params.key})
             .then(user => {
                 res.send({deleted: true})
-                console.log(user)
             }).catch(e => {
             console.log(e)
         })
