@@ -1,5 +1,5 @@
 import {useRef, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import http from "../plugins/Fetch";
 
 
@@ -8,6 +8,7 @@ function EditUser({getUsers}) {
 
     const params = useParams()
     const [getError, setError] = useState("")
+    const history = useHistory();
     const id = params.id
     const name = useRef()
     const age = useRef()
@@ -28,6 +29,8 @@ function EditUser({getUsers}) {
                 setError(res.message)
             } else {
                 setError(res.message)
+                setUser(null)
+                history.push('/')
             }
         })
     }

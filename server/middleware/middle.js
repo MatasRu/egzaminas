@@ -16,8 +16,11 @@ async function middleware (req, res, next){
     if (req.body.age < 10) {
         return errorMessage("Vartotojo amžius negali būti mažesnis nei 10 metų")
     }
-    if (!req.body.email.includes("@") && !req.body.email.includes(".")) {
-        return errorMessage("Vartotojo el. paštas neteisingas. Privalomi @ ir . ženklai ")
+    if (!req.body.email.includes("@")) {
+        return errorMessage("Vartotojo el. paštas neteisingas. Privalomas @ ženklas ")
+    }
+    if (!req.body.email.includes(".")) {
+        return errorMessage("Vartotojo el. paštas neteisingas. Privalomas . ženklas ")
     }
 
     return next()

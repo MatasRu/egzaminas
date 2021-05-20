@@ -25,8 +25,9 @@ function ShowUsers({getUsers}) {
 
             <div className="mt-50 border user"/>
 
-            {!!getUsers.length > 0 ? getUsers.map((item, index) => <div className="user d-flex flex-a-center flex-j-btw border" key={index}>
-               <div className="width25">{item.userName}</div>
+            {!!getUsers.length > 0 ? getUsers.map((item, index) => <div
+                className="user d-flex flex-a-center flex-j-btw border" key={index}>
+                <div className="width25">{item.userName}</div>
                 <div className="width25">{item.userAge}</div>
                 <div className="width25">{item.userEmail}</div>
                 <div className="width25">{item.userPassword}</div>

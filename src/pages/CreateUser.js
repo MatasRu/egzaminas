@@ -1,8 +1,10 @@
 import http from "../plugins/Fetch"
+import {useHistory} from "react-router-dom";
 import {useRef, useState} from 'react';
+
 function CreateUser() {
 
-
+    const history = useHistory();
     const [getError, setError] = useState("")
 
     const name = useRef()
@@ -19,10 +21,11 @@ function CreateUser() {
             password: password.current.value
         }
         http.post('/createUser', data).then(res => {
-            if(res.error){
+            if (res.error) {
                 setError(res.message)
-            }else{
+            } else {
                 setError(res.message)
+                history.push('/')
             }
 
         })
