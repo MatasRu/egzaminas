@@ -1,10 +1,9 @@
 import {useRef, useState} from "react";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import http from "../plugins/Fetch";
 
 
 function EditUser({getUsers}) {
-
 
 
     const params = useParams()
@@ -25,9 +24,9 @@ function EditUser({getUsers}) {
             password: password.current.value
         }
         http.post('/editUser', data).then(res => {
-            if(res.error){
+            if (res.error) {
                 setError(res.message)
-            }else{
+            } else {
                 setError(res.message)
             }
         })
@@ -38,10 +37,10 @@ function EditUser({getUsers}) {
 
         <div className="d-flex flex-dir-col mt-50 flex-a-center flex-j-center">
 
-            <input ref={name} type="text" placeholder={user.userName}/>
-            <input ref={age} type="number" placeholder={user.userAge}/>
-            <input ref={email} type="text" placeholder={user.userEmail}/>
-            <input ref={password} type="password" placeholder={user.userPassword}/>
+            <div>Vartotojo vardas: <input ref={name} type="text" placeholder={user.userName}/></div>
+            <div>Vartotojo amžius: <input ref={age} type="number" placeholder={user.userAge}/></div>
+            <div>Vartotojo el. paštas: <input ref={email} type="text" placeholder={user.userEmail}/></div>
+            <div>Vartotojo slaptažodis: <input ref={password} type="password" placeholder={user.userPassword}/></div>
             <button onClick={updateUser} className="mt-20">Pateikti</button>
 
             <div className="mt-50 green">{getError}</div>
