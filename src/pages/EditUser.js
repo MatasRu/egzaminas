@@ -5,7 +5,6 @@ import http from "../plugins/Fetch";
 
 function EditUser({getUsers}) {
 
-
     const params = useParams()
     const [getError, setError] = useState("")
     const history = useHistory();
@@ -35,22 +34,16 @@ function EditUser({getUsers}) {
         })
     }
 
-
     return (
 
         <div className="d-flex flex-dir-col mt-50 flex-a-center flex-j-center">
-
             <div>Vartotojo vardas: <input ref={name} type="text" placeholder={user.userName}/></div>
             <div>Vartotojo amžius: <input ref={age} type="number" placeholder={user.userAge}/></div>
             <div>Vartotojo el. paštas: <input ref={email} type="text" placeholder={user.userEmail}/></div>
             <div>Vartotojo slaptažodis: <input ref={password} type="password" placeholder={user.userPassword}/></div>
             <button onClick={updateUser} className="mt-20">Pateikti</button>
-
             <div className="mt-50 green">{getError}</div>
-
         </div>
-
-
     );
 }
 

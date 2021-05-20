@@ -7,8 +7,6 @@ function ShowUsers({getUsers}) {
         http.get(`/deleteUser/${id}`).then(res => {
             console.log(res)
         })
-
-
     }
 
     return (

@@ -41,6 +41,11 @@
   border-bottom: 1px solid black;
 }
 
+input {
+  width: 200px;
+  height: 36px;
+  margin-top: 3px;
+}
 
 
 .bold{
