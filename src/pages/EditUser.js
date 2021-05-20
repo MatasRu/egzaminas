@@ -5,14 +5,16 @@ import http from "../plugins/Fetch";
 
 function EditUser({getUsers}) {
 
-    const params = useParams()
 
+
+    const params = useParams()
     const [getError, setError] = useState("")
     const id = params.id
     const name = useRef()
     const age = useRef()
     const email = useRef()
     const password = useRef()
+    const [user, setUser] = useState(getUsers.find(o => o._id === params.id))
 
     const updateUser = () => {
         const data = {
@@ -24,9 +26,9 @@ function EditUser({getUsers}) {
         }
         http.post('/editUser', data).then(res => {
             if(res.error){
-                setError("Įvyko klaida, bandykite dar kartą")
+                setError(res.message)
             }else{
-                setError("Vartotojas paredaguotas sėkmingai")
+                setError(res.message)
             }
         })
     }
@@ -36,10 +38,10 @@ function EditUser({getUsers}) {
 
         <div className="d-flex flex-dir-col mt-50 flex-a-center flex-j-center">
 
-            <input ref={name} type="text" placeholder="Vartotojo vardas"/>
-            <input ref={age} type="number" placeholder="Vartotojo amžius"/>
-            <input ref={email} type="text" placeholder="Vartotojo el. paštas"/>
-            <input ref={password} type="password" placeholder="Vartotojo slaptažodis"/>
+            <input ref={name} type="text" placeholder={user.userName}/>
+            <input ref={age} type="number" placeholder={user.userAge}/>
+            <input ref={email} type="text" placeholder={user.userEmail}/>
+            <input ref={password} type="password" placeholder={user.userPassword}/>
             <button onClick={updateUser} className="mt-20">Pateikti</button>
 
             <div className="mt-50 green">{getError}</div>

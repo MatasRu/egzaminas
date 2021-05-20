@@ -5,13 +5,19 @@ async function middleware (req, res, next){
     }
 
     if (req.body.name.length < 3) {
-        return errorMessage("User Name is too short, it should be more then 3 characters")
+        return errorMessage("Vartotojo vardas privalo būti ilgesnis nei 3 simboliai")
     }
     if (!Number(req.body.age)) {
-        return errorMessage("User Age must be a number")
+        return errorMessage("Vartotojo amžius privalo būti skaičius")
+    }
+    if (req.body.age > 99) {
+        return errorMessage("Vartotojo amžius negali būti didesnis nei 99 metai")
+    }
+    if (req.body.age < 10) {
+        return errorMessage("Vartotojo amžius negali būti mažesnis nei 10 metų")
     }
     if (!req.body.email.includes("@") && !req.body.email.includes(".")) {
-        return errorMessage("Email address should have @ and . symbols")
+        return errorMessage("Vartotojo el. paštas neteisingas. Privalomi @ ir . ženklai ")
     }
 
     return next()

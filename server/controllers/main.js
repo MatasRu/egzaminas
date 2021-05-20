@@ -9,7 +9,7 @@ module.exports = {
         user.userEmail = req.body.email
         user.userPassword = req.body.password
         user.save().then(() => {
-            res.send({error: false, message: "User created successfully"})
+            res.send({error: false, message: "Vartotojas sukurtas sėkmingai"})
         }).catch(e => {
             res.send({error: true, message: "There was an error", mistake: e})
         })
@@ -23,7 +23,7 @@ module.exports = {
                 userEmail: req.body.email,
                 userPassword: req.body.password
             })
-        res.send({error:false, message: "SVEIKI"})
+        res.send({error:false, message: "Vartotojas sėkmingai atnaujintas"})
 
     },
     getUsers: async (req, res) => {
@@ -33,7 +33,7 @@ module.exports = {
     deleteUser: async (req, res) => {
         usersDb.findOneAndRemove({_id: req.params.key})
             .then(user => {
-                res.send({deleted: true})
+                res.send({deleted: true, user:user})
             }).catch(e => {
             console.log(e)
         })

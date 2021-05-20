@@ -1,6 +1,6 @@
 import http from "../plugins/Fetch"
 import {useRef, useState} from 'react';
-function CreateUser({set}) {
+function CreateUser() {
 
 
     const [getError, setError] = useState("")
@@ -9,6 +9,7 @@ function CreateUser({set}) {
     const age = useRef()
     const email = useRef()
     const password = useRef()
+
 
     const createUser = () => {
         const data = {
@@ -19,9 +20,9 @@ function CreateUser({set}) {
         }
         http.post('/createUser', data).then(res => {
             if(res.error){
-                setError("Įvyko klaida, bandykite dar kartą")
+                setError(res.message)
             }else{
-                setError("Vartotojas sukurtas sėkmingai")
+                setError(res.message)
             }
 
         })

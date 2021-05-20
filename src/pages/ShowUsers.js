@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 function ShowUsers({getUsers}) {
 
-
     const deleteUser = (id) => {
         http.get(`/deleteUser/${id}`).then(res => {
             console.log(res)

@@ -37,7 +37,7 @@ function App() {
               </Route>
 
               <Route path="/CreateUser">
-                <CreateUser set={setUsers}/>
+                <CreateUser/>
               </Route>
 
               <Route path="/EditUser/:id">
