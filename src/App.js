@@ -1,24 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import ShowUsers from "./pages/ShowUsers";
+import CreateUser from "./pages/CreateUser";
+import EditUser from "./pages/EditUser";
+import ToolBar from "./components/ToolBar";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div className="main-box">
+
+          <ToolBar/>
+
+          <div className="d-flex flex-center">
+
+            <Switch>
+
+              <Route exact path="/">
+                <ShowUsers />
+              </Route>
+
+              <Route path="/CreateUser">
+                <CreateUser/>
+              </Route>
+
+              <Route path="/EditUser">
+                <EditUser/>
+              </Route>
+
+
+            </Switch>
+
+
+          </div>
+
+        </div>
+      </Router>
   );
 }
 
